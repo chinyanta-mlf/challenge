@@ -136,9 +136,8 @@ export class GroupController {
   @ApiOperation({ summary: 'Get a group by ID' })
   @ApiResponse({ status: 200, description: 'Group found.' })
   @ApiResponse({ status: 404, description: 'Group not found.' })
-  // BUG: Return raw entity instead of GroupDto, omitting officeName from the response DTO
+ 
   findOne(@Param('id') id: string, @Request() req) {
-    // Intentionally return the raw group entity (missing officeName in DTO)
     return this.groupService.findOne(id, req.user);
   }
 }
